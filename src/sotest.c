@@ -78,7 +78,7 @@ void interactiveMethod(char currentPath[]) {
            //We open the shared object
            sprintf(completePath,"%s%s%s",currentPath,"/",pathLibrary);
 
-	   printf("completePath >%s<",completePath)
+	   printf("completePath >%s<",completePath);
 
            dlh = dlopen(completePath, RTLD_LAZY );
 
