@@ -53,7 +53,7 @@ void interactiveMethod(char currentPath[]) {
      }
      scanf("%s", commandC);
 
-     if ( strcmp(commandC,"quit") ) {
+     if ( strcmp(commandC,"quit")==0 ) {
         return;
      }
 
