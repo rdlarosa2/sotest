@@ -31,13 +31,14 @@ int extractToken(char line[], char token[], int maxlength) {
    return 0;
 }
 
-void interactiveMethod(void) {
+void interactiveMethod(char currentPath[]) {
   FILE * fp=stdin;
   char *charPrt = NULL ;
   char line[400];
   char commandC[400];
-  char pathLibrary[400];
+  char pathLibrary[MAX_FILENAME];
   char functionName[400];
+  char completePath[400];
   int boolFileLoaded =0;
   void* dlh = NULL ;
 
@@ -52,8 +53,8 @@ void interactiveMethod(void) {
      printf("path of shared library or function name: ");
      scanf("%s", pathLibrary);
 
-     printf("commandC >>%s<<", commandC);
-     printf("pathLibrary>>%s<<", pathLibrary);
+     printf("commandC >>%s<<\n", commandC);
+     printf("pathLibrary>>%s<<\n", pathLibrary);
 
      if ( (commandC[0]=='#') ||  (commandC[0]==';') ) {
 	continue;
@@ -75,7 +76,11 @@ void interactiveMethod(void) {
            //bo printf("pathLibrary >%s<\n",pathLibrary); 
 
            //We open the shared object
-           dlh = dlopen(pathLibrary, RTLD_LAZY );
+           sprintf(completePath,"%s%s%s",currentPath,"/",pathLibrary)
+
+	   printf("completePath >%s<",completePath)
+
+           dlh = dlopen(completePath, RTLD_LAZY );
 
            if ( dlh==NULL ) {
               fprintf(stderr, "File %s not found or this file is not a shared library\n", pathLibrary );
@@ -139,7 +144,7 @@ int main(int argc, char** argv) {
   } 
 
   if (argc==1) {
-     interactiveMethod() ;
+     interactiveMethod(cwd) ;
      return 0;
   }
 
