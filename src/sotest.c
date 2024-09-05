@@ -173,8 +173,6 @@ int main(int argc, char** argv) {
            if ( boolFileLoaded==1 ) {
               extractToken(line+5, functionName, 400);
 
-	      printf("functionName1 >>%s<<",functionName);
-
 	      if ( functionName[0]=='\\' ) {
 	         boolReadingFunctionName = 1;
 		 charPrt = fgets(line,400,fp);
