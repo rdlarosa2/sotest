@@ -2,7 +2,9 @@
 #include <stdlib.h> 
 #include <string.h>
 #include <dlfcn.h> 
- 
+ #include <unistd.h>
+char *getcwd(char *buf, size_t size);
+//We declare a function pointer for function to import (int myfunction(int) )
 typedef void (*t_myfunc)(void);
 
 /*
@@ -118,7 +120,13 @@ int main(int argc, char** argv) {
   int boolReadingFunctionName =0;
   void* dlh = NULL ;
 
-  //We declare a function pointer for the function to import (int myfunction(int) )
+    char cwd[PATH_MAX];
+   if (getcwd(cwd, sizeof(cwd)) != NULL) {
+       printf("Current working dir: >>%s<<\n", cwd);
+   } else {
+       fprintf(stderr, "getcwd() error");
+       return 1;
+   } 
 
   if (argc==1) {
      interactiveMethod() ;

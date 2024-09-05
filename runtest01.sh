@@ -1,3 +1,3 @@
 cd bin
-./sotest /home/rdelarosa/wspacebpc/sotest/scripts/commands01.sc
+./sotest $SOTEST_HOME/scripts/commands01.sc
 cd ..
