@@ -128,13 +128,11 @@ int main(int argc, char** argv) {
   int boolReadingFunctionName =0;
   void* dlh = NULL ;
 
-    char cwd[PATH_LENGTH];
-   if (getcwd(cwd, sizeof(cwd)) != NULL) {
-       printf("Current working dir: >>%s<<\n", cwd);
-   } else {
+  char cwd[PATH_LENGTH];
+  if (getcwd(cwd, sizeof(cwd)) == NULL) {
        fprintf(stderr, "getcwd() error");
        return 1;
-   } 
+  } 
 
   if (argc==1) {
      interactiveMethod() ;
