@@ -46,18 +46,26 @@ void interactiveMethod(char currentPath[]) {
 
    while ( 1 ) {
      if (boolFileLoaded==0) {
-        printf("command(use): ");
+        printf("command(use,quit): ");
      }
      else {
-        printf("command(use,call): ");
+        printf("command(use,call,quit): ");
      }
      scanf("%s", commandC);
 
-     printf("path of shared library or function name: ");
-     scanf("%s", pathLibrary);
+     if ( strcmp(commandC,"quit") ) {
+        return;
+     }
 
-     printf("commandC >>%s<<\n", commandC);
-     printf("pathLibrary>>%s<<\n", pathLibrary);
+
+     if ( strcmp(commandC,"use")==0 ) {
+        printf("path of shared library: ");
+        scanf("%s", pathLibrary);
+     }
+     else if ( strcmp(commandC,"call")==0 ) {
+        printf("function name: ");
+        scanf("%s", pathLibrary);
+     }
 
      if ( (commandC[0]=='#') ||  (commandC[0]==';') ) {
 	continue;
@@ -80,8 +88,6 @@ void interactiveMethod(char currentPath[]) {
 
            //We open the shared object
            sprintf(completePath,"%s%s%s",currentPath,"/",pathLibrary);
-
-	   printf("completePath >%s<",completePath);
 
            dlh = dlopen(completePath, RTLD_LAZY );
 
