@@ -46,7 +46,7 @@ void interactiveMethod(char currentPath[]) {
 
    while ( 1 ) {
      if (boolFileLoaded==0) {
-        printf("command: ");
+        printf("command(use,call): ");
      }
      scanf("%s", commandC);
 
@@ -76,7 +76,7 @@ void interactiveMethod(char currentPath[]) {
            //bo printf("pathLibrary >%s<\n",pathLibrary); 
 
            //We open the shared object
-           sprintf(completePath,"%s%s%s",currentPath,"/",pathLibrary)
+           sprintf(completePath,"%s%s%s",currentPath,"/",pathLibrary);
 
 	   printf("completePath >%s<",completePath)
 
