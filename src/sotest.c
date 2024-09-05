@@ -46,6 +46,9 @@ void interactiveMethod(char currentPath[]) {
 
    while ( 1 ) {
      if (boolFileLoaded==0) {
+        printf("command(use): ");
+     }
+     else {
         printf("command(use,call): ");
      }
      scanf("%s", commandC);
