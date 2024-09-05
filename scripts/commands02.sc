@@ -1,2 +1,2 @@
-use /home/rdelarosa/wspace/sotest/bin/libfunctionsFour.so
+use libfunctionsFour.so
 call functionFour

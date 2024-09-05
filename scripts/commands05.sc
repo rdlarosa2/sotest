@@ -1,3 +1,3 @@
-use /home/rdelarosa/wspace/sotest/bin/libfunctionsOneAndTwo.so
+use libfunctionsOneAndTwo.so
 call \ 
 functionOne

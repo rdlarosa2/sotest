@@ -1,2 +1,2 @@
-use /home/rdelarosa/wspace/sotest/bin/functionsFour.o
+use functionsFour.o
 call functionFour
