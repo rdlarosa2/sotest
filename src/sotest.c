@@ -136,7 +136,7 @@ void trim(char source[], char target[]) {
    while ( (j>=i) && isspace(source[j])  ){
       j-- ;
    }
-   strncpy(target, s+i,j-i+1);
+   strncpy(target, source+i,j-i+1);
    target[j-i+1] = '\0';
 }
 
