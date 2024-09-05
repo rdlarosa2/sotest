@@ -35,11 +35,11 @@ int extractToken(char line[], char token[], int maxlength) {
 void interactiveMode(char currentPath[]) {
    FILE * fp=stdin;
    char *charPrt = NULL ;
-   char line[400];
-   char commandC[400];
+   char line[MAX_LINE];
+   char commandC[MAX_TOKEN];
    char pathLibrary[MAX_FILENAME];
-   char functionName[400];
-   char completePath[400];
+   char functionName[MAX_TOKEN];
+   char completePath[PATH_MAX];
    int boolFileLoaded =0;
    void* dlh = NULL ;
 
@@ -72,11 +72,6 @@ void interactiveMode(char currentPath[]) {
 	continue;
      }
       
-     /* vamos a extraer el comando */
-     // extractToken(line, commandC , 400);
-     //bo printf("command >%s<\n",commandC); 
-
-
      if ( strcmp(commandC,"use")==0 ) { 
            if ( (boolFileLoaded==1) && ( dlh!=NULL ) ) {
               dlclose(dlh);
@@ -85,7 +80,6 @@ void interactiveMode(char currentPath[]) {
 
            /* Vamos a cargar un archivo */
            // extractToken(line+4, pathLibrary, 400);
-           //bo printf("pathLibrary >%s<\n",pathLibrary); 
 
            //We open the shared object
            sprintf(completePath,"%s%s%s",currentPath,"/",pathLibrary);
@@ -177,7 +171,8 @@ int main(int argc, char** argv) {
 
   char *charPrt = NULL ;
 
-  for ( charPrt = fgets(line,400,fp) ; charPrt != NULL ; charPrt = fgets(line,400,fp) ) {
+  for ( charPrt = fgets(line,400,fp) ; charPrt != NULL 
+		  ; charPrt = fgets(line,400,fp) ) {
 
      if ( (line[0]=='#') ||  (line[0]==';') ) {
 	continue;
@@ -185,8 +180,6 @@ int main(int argc, char** argv) {
       
      /* vamos a extraer el comando */
      extractToken(line, commandC , 400);
-     //bo printf("command >%s<\n",commandC); 
-
 
      if ( strcmp(commandC,"use")==0 ) { 
            if ( (boolFileLoaded==1) && ( dlh!=NULL ) ) {
@@ -194,10 +187,9 @@ int main(int argc, char** argv) {
 	   }
 
 
-           /* Vamos a cargar un archivo */
+           /* Let's load the shared library file */
            extractToken(line+4, filenameSO, 400);
            sprintf(pathLibrary,"%s%s%s",cwd,"/",filenameSO);
-           //bo printf("pathLibrary >%s<\n",pathLibrary); 
 
            //We open the shared object
            dlh = dlopen(pathLibrary, RTLD_LAZY );
