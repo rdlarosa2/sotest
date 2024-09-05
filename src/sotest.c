@@ -117,6 +117,7 @@ void trim(char source[], char target[]) {
 int main(int argc, char** argv) { 
 
   char filename[PATH_MAX];
+  char filenameSO[PATH_MAX];
   char line[MAX_LINE];
   char commandC[MAX_TOKEN];
   char pathLibrary[PATH_MAX];
@@ -169,7 +170,8 @@ int main(int argc, char** argv) {
 
 
            /* Vamos a cargar un archivo */
-           extractToken(line+4, pathLibrary, 400);
+           extractToken(line+4, filenameSO, 400);
+           sprintf(pathLibrary,"%s%s%s",cwd,"/",filenameSO);
            //bo printf("pathLibrary >%s<\n",pathLibrary); 
 
            //We open the shared object
