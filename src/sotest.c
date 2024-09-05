@@ -2,7 +2,12 @@
 #include <stdlib.h> 
 #include <string.h>
 #include <dlfcn.h> 
- #include <unistd.h>
+#include <unistd.h>
+
+#define PATH_MAX 400
+#define MAX_LINE 400
+#define MAX_TOKEN 400
+
 char *getcwd(char *buf, size_t size);
 //We declare a function pointer for function to import (int myfunction(int) )
 typedef void (*t_myfunc)(void);
@@ -111,11 +116,11 @@ void trim(char source[], char target[]) {
 
 int main(int argc, char** argv) { 
 
-  char filename[300];
-  char line[400];
-  char commandC[400];
-  char pathLibrary[400];
-  char functionName[400];
+  char filename[PATH_MAX];
+  char line[MAX_LINE];
+  char commandC[MAX_TOKEN];
+  char pathLibrary[PATH_MAX];
+  char functionName[MAX_TOKEN];
   int boolFileLoaded =0;
   int boolReadingFunctionName =0;
   void* dlh = NULL ;
