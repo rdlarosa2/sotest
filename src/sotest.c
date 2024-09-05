@@ -44,8 +44,12 @@ void interactiveMethod(void) {
 
 
    while ( 1 ) {
-
+     if (boolFileLoaded==0) {
+        printf("command: ");
+     }
      scanf("%s", commandC);
+
+     printf("path of shared library or function name: ");
      scanf("%s", pathLibrary);
 
      printf("commandC >>%s<<", commandC);
