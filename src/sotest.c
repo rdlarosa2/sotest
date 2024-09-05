@@ -217,9 +217,6 @@ int main(int argc, char** argv) {
 	         boolReadingFunctionName = 1;
 		 charPrt = fgets(line,400,fp);
                  trim(line, functionName) ;
-		 printf("functionNameX >%s<",functionName);
-		 // strncpy(functionName,line,strlen(line)-1 );
-                 // functionName[strlen(line)-1] = '\0' ;
 	      }
 
               //We invoke the function functionName
