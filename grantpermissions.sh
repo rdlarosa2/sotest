@@ -5,3 +5,4 @@ chmod goa+x runtest03.sh
 chmod goa+x runtest04.sh
 chmod goa+x runtest05.sh
 chmod goa+x runtest06.sh
+chmod goa+x runtest07.sh
