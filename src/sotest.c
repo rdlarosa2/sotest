@@ -193,7 +193,6 @@ int main(int argc, char** argv) {
 		 charPrt = fgets(line,400,fp);
 		 strncpy(functionName,line,strlen(line)-1 );
                  functionName[strlen(line)-1] = '\0' ;
-	         printf("functionName2 >>%s<<",functionName);
 	      }
 
               //We invoke the function functionName
