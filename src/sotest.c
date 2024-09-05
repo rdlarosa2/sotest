@@ -230,7 +230,7 @@ int main(int argc, char** argv) {
               (*mf1)();
 	   }
 	   else {
-              fprintf(stdout,"warning: before calling a function you must load a library with 'use' command" ); 
+              fprintf(stdout,"Warning: before calling a function you must load a library with 'use' command\n" ); 
 	   }
      }	     
      
