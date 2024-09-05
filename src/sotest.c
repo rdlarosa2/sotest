@@ -46,10 +46,10 @@ void interactiveMethod(char currentPath[]) {
 
    while ( 1 ) {
      if (boolFileLoaded==0) {
-        printf("command(use,quit): ");
+        printf("Command(use,quit): ");
      }
      else {
-        printf("command(use,call,quit): ");
+        printf("Command(use,call,quit): ");
      }
      scanf("%s", commandC);
 
@@ -59,11 +59,11 @@ void interactiveMethod(char currentPath[]) {
 
 
      if ( strcmp(commandC,"use")==0 ) {
-        printf("path of shared library: ");
+        printf("Name of shared library: ");
         scanf("%s", pathLibrary);
      }
      else if ( strcmp(commandC,"call")==0 ) {
-        printf("function name: ");
+        printf("Function name: ");
         scanf("%s", pathLibrary);
      }
 
@@ -118,9 +118,6 @@ void interactiveMethod(char currentPath[]) {
 	   }
      }	     
      
-     //printf("antes de segundo scanf");
-     //scanf("%s", line);
-     //printf("out2: >>%s<<", line);
   }
 }
 
