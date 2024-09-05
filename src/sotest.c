@@ -5,8 +5,10 @@
 #include <unistd.h>
 
 #define PATH_MAX 400
+#define PATH_LENGTH 300
 #define MAX_LINE 400
 #define MAX_TOKEN 400
+#define MAX_FILENAME 50 
 
 char *getcwd(char *buf, size_t size);
 //We declare a function pointer for function to import (int myfunction(int) )
@@ -116,7 +118,7 @@ void trim(char source[], char target[]) {
 
 int main(int argc, char** argv) { 
 
-  char filename[PATH_MAX];
+  char filename[MAX_FILENAME];
   char filenameSO[PATH_MAX];
   char line[MAX_LINE];
   char commandC[MAX_TOKEN];
@@ -126,7 +128,7 @@ int main(int argc, char** argv) {
   int boolReadingFunctionName =0;
   void* dlh = NULL ;
 
-    char cwd[PATH_MAX];
+    char cwd[PATH_LENGTH];
    if (getcwd(cwd, sizeof(cwd)) != NULL) {
        printf("Current working dir: >>%s<<\n", cwd);
    } else {
