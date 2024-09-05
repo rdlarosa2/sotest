@@ -31,16 +31,16 @@ int extractToken(char line[], char token[], int maxlength) {
    return 0;
 }
 
-void interactiveMethod(char currentPath[]) {
-  FILE * fp=stdin;
-  char *charPrt = NULL ;
-  char line[400];
-  char commandC[400];
-  char pathLibrary[MAX_FILENAME];
-  char functionName[400];
-  char completePath[400];
-  int boolFileLoaded =0;
-  void* dlh = NULL ;
+void interactiveMode(char currentPath[]) {
+   FILE * fp=stdin;
+   char *charPrt = NULL ;
+   char line[400];
+   char commandC[400];
+   char pathLibrary[MAX_FILENAME];
+   char functionName[400];
+   char completePath[400];
+   int boolFileLoaded =0;
+   void* dlh = NULL ;
 
 
 
@@ -54,7 +54,7 @@ void interactiveMethod(char currentPath[]) {
      scanf("%s", commandC);
 
      if ( strcmp(commandC,"quit")==0 ) {
-        return;
+        break;
      }
 
 
@@ -118,17 +118,26 @@ void interactiveMethod(char currentPath[]) {
 	   }
      }	     
      
-  }
+   }
+
+   if (dlh!=NULL) {
+      dlclose(dlh);
+   }
 }
 
 void trim(char source[], char target[]) {
    int i=0;
    int iTarget=0;
-   while ( (source[i]==' ') && (source[i]!='\0') ) {
+   int j=strlen(source)-1;
+   while ( isspace(source[i]) ) {
       i++ ;  	   
    }
 
-   //i = strlen()
+   while ( (j>=i) && isspace(source[j])  ){
+      j-- ;
+   }
+   strncpy(target, s+i,j-i+1);
+   target[j-i+1] = '\0';
 }
 
 int main(int argc, char** argv) { 
@@ -150,7 +159,7 @@ int main(int argc, char** argv) {
   } 
 
   if (argc==1) {
-     interactiveMethod(cwd) ;
+     interactiveMode(cwd) ;
      return 0;
   }
 
@@ -206,8 +215,9 @@ int main(int argc, char** argv) {
 	      if ( functionName[0]=='\\' ) {
 	         boolReadingFunctionName = 1;
 		 charPrt = fgets(line,400,fp);
-		 strncpy(functionName,line,strlen(line)-1 );
-                 functionName[strlen(line)-1] = '\0' ;
+                 trim(line, functionName) ;
+		 // strncpy(functionName,line,strlen(line)-1 );
+                 // functionName[strlen(line)-1] = '\0' ;
 	      }
 
               //We invoke the function functionName
