@@ -119,7 +119,7 @@ void trim(char source[], char target[]) {
 int main(int argc, char** argv) { 
 
   char filename[MAX_FILENAME];
-  char filenameSO[PATH_MAX];
+  char filenameSO[MAX_FILENAME];
   char line[MAX_LINE];
   char commandC[MAX_TOKEN];
   char pathLibrary[PATH_MAX];
